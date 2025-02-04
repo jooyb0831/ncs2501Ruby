@@ -310,8 +310,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 967198314}
-  - component: {fileID: 967198313}
   - component: {fileID: 967198312}
+  - component: {fileID: 967198313}
   m_Layer: 0
   m_Name: Ruby
   m_TagString: Untagged
