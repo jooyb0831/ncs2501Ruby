@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class RubyController : MonoBehaviour
 {
-    const float SPEED = 3.0f;
+    private Rigidbody2D rb2d;
+    const float SPEED = 40f;
     // Start is called before the first frame update
     void Start()
     {
+        rb2d = GetComponent<Rigidbody2D>();
         /*
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 10;// 초당 프레임 10으로 제한
@@ -25,9 +27,9 @@ public class RubyController : MonoBehaviour
         Debug.Log($"h:{horizontal}");
         Debug.Log($"v:{vertical}");
         */
-        Vector2 position = transform.position;
+        Vector2 position = rb2d.position;
         position.x += SPEED * horizontal * Time.deltaTime;
         position.y += SPEED * vertical * Time.deltaTime;
-        transform.position = position;
+        rb2d.MovePosition(position);
     }
 }
