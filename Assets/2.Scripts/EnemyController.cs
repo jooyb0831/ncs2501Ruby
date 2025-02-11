@@ -6,20 +6,23 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     private Rigidbody2D rb2d;
+    private Animator animator;
+    [SerializeField] float SPEED = 4.0f;
 
-    [SerializeField] float SPEED = 15f;
-
-    public float changeTime = 3.0f;
+    public float changeTime = 2.0f;
     [SerializeField] float timer = 1;
     int direction = 1;
     public bool isVertical;
+
+    private Vector2 position;
 
     
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
-        rb2d.velocity = Vector2.one * -1; 
+        position = rb2d.position; 
         timer = changeTime;
     }
 
@@ -34,14 +37,17 @@ public class EnemyController : MonoBehaviour
             timer = changeTime;
         }
 
-        Vector2 position = rb2d.position;
-
+       
         if(isVertical)
         {
+            animator.SetFloat("MoveX", 0);
+            animator.SetFloat("MoveY", direction);
             position.y += Time.deltaTime * SPEED * direction;
         }
         else
         {
+            animator.SetFloat("MoveX", direction);
+            animator.SetFloat("MoveY", 0);
             position.x += Time.deltaTime * SPEED * direction;
         }
 
