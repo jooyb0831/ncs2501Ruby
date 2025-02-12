@@ -5858,6 +5858,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4495255494245278625, guid: 768010c5623c17b45888799682dcb3ec, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4495255494245278626, guid: 768010c5623c17b45888799682dcb3ec, type: 3}
       propertyPath: isVertical
       value: 0
@@ -6418,6 +6422,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4495255494245278625, guid: 768010c5623c17b45888799682dcb3ec, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4495255494245278627, guid: 768010c5623c17b45888799682dcb3ec, type: 3}
       propertyPath: m_RootOrder
       value: 17
@@ -6428,7 +6436,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4495255494245278627, guid: 768010c5623c17b45888799682dcb3ec, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.092
       objectReference: {fileID: 0}
     - target: {fileID: 4495255494245278627, guid: 768010c5623c17b45888799682dcb3ec, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6487,6 +6495,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0.24
       objectReference: {fileID: 0}
+    - target: {fileID: 7846768161415123552, guid: 4ea4b6611d75e444580910ac1a8e26ae, type: 3}
+      propertyPath: projectilePrefab
+      value: 
+      objectReference: {fileID: 7785927063791493574, guid: a4b0ceef6f513844da4d524a35663d22, type: 3}
     - target: {fileID: 7846768161415123553, guid: 4ea4b6611d75e444580910ac1a8e26ae, type: 3}
       propertyPath: m_SortingOrder
       value: 1
@@ -6538,6 +6550,10 @@ PrefabInstance:
     - target: {fileID: 7846768161415123567, guid: 4ea4b6611d75e444580910ac1a8e26ae, type: 3}
       propertyPath: m_Name
       value: Ruby
+      objectReference: {fileID: 0}
+    - target: {fileID: 7846768161415123567, guid: 4ea4b6611d75e444580910ac1a8e26ae, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ea4b6611d75e444580910ac1a8e26ae, type: 3}

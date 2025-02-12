@@ -12,6 +12,8 @@ public class EnemyController : MonoBehaviour
     public float changeTime = 2.0f;
     [SerializeField] float timer = 1;
     int direction = 1;
+
+    bool broken = true;
     public bool isVertical;
 
     private Vector2 position;
@@ -29,6 +31,10 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!broken)
+        {
+            return;
+        }
         
         timer -= Time.deltaTime;
         if(timer<0)
@@ -63,5 +69,12 @@ public class EnemyController : MonoBehaviour
         {
             player.ChangeHealth(-1);
         }
+    }
+
+    public void Fix()
+    {
+        broken = false;
+        rb2d.simulated = false;
+        animator.SetTrigger("Fixed");
     }
 }
