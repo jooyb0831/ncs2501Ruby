@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class RubyController : MonoBehaviour
@@ -22,6 +23,7 @@ public class RubyController : MonoBehaviour
 
 
     [SerializeField] GameObject projectilePrefab;
+    [SerializeField] GameObject collEffectPrefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -86,8 +88,10 @@ public class RubyController : MonoBehaviour
             }
             isInvincible = true;
             invincibleTimer = timeInvincible;
+            //Instantiate(collEffectPrefab, rb2d.position + Vector2.up * 0.2f, Quaternion.identity);
         }
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
+        UIHealthBar.instance.SetValue(currentHealth / (float)maxHealth);
         Debug.Log($"{currentHealth}/{maxHealth}");
     }
 
