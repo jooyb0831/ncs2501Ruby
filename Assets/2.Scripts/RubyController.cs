@@ -76,6 +76,19 @@ public class RubyController : MonoBehaviour
         {
             Launch();
         }
+
+        if(Input.GetKeyDown(KeyCode.X))
+        {
+            RaycastHit2D hit = Physics2D.Raycast(rb2d.position + Vector2.up * 0.2f, lookDirection, 1.5f, LayerMask.GetMask("NPC"));
+            if(hit.collider!=null)
+            {
+                NPC npc = hit.collider.GetComponent<NPC>();
+                if(npc !=null)
+                {
+                    npc.DisplayDialog();
+                }
+            }
+        }
     }
 
     public void ChangeHealth(int amount)
