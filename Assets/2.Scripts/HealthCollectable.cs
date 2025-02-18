@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HealthCollectable : MonoBehaviour
 {
+    public AudioClip collectedClip;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +26,7 @@ public class HealthCollectable : MonoBehaviour
             if (controller.Health < controller.maxHealth)
             {
                 controller.ChangeHealth(1);
+                controller.PlaySound(collectedClip);
                 Destroy(gameObject);
             }
 

@@ -8,6 +8,8 @@ public class RubyController : MonoBehaviour
 {
     private Vector2 position;
     private Rigidbody2D rb2d;
+
+    private AudioSource audioSource;
     const float SPEED = 4.0f;
 
     public float timeInvincible = 2.0f;
@@ -29,12 +31,18 @@ public class RubyController : MonoBehaviour
     {
         rb2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
         position = rb2d.position;
         currentHealth = maxHealth;
         /*
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 10;// 초당 프레임 10으로 제한
         */
+    }
+
+    public void PlaySound(AudioClip clip)
+    {
+        audioSource.PlayOneShot(clip);
     }
 
     // Update is called once per frame
@@ -113,6 +121,7 @@ public class RubyController : MonoBehaviour
         GameObject projectileObj = Instantiate(projectilePrefab, rb2d.position + Vector2.up * 0.5f, Quaternion.identity);
         Projectile projectile = projectileObj.GetComponent<Projectile>();
         projectile.Launch(lookDirection, 300);
+        PlaySound(projectile.bulletAud);
         animator.SetTrigger("Launch");
     }
 }
