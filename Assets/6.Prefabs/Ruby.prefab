@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -5749380239335851815}
   - component: {fileID: 7378238079040124218}
   - component: {fileID: 3726697517407540939}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ruby
   m_TagString: RUBY
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ MonoBehaviour:
   timeInvincible: 2
   maxHealth: 5
   currentHealth: 0
-  projectilePrefab: {fileID: 0}
+  projectilePrefab: {fileID: 7785927063791493574, guid: a4b0ceef6f513844da4d524a35663d22, type: 3}
   collEffectPrefab: {fileID: 0}
 --- !u!95 &3117675052845720668
 Animator:
@@ -115,7 +115,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 736c0cd0b6976484d85503219f43643f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -142,10 +142,10 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!61 &7378238079040124218
@@ -161,7 +161,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0045377463, y: 0.23}
+  m_Offset: {x: -0.0045377463, y: 0.24}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}

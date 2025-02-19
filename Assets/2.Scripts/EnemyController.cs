@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Tilemaps;
+//using UnityEditor.Tilemaps;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -88,6 +88,10 @@ public class EnemyController : MonoBehaviour
         animator.SetTrigger("Fixed");
         smokeEffect.Stop();
         RubyController ruby = GameObject.FindWithTag("RUBY").GetComponent<RubyController>();
-        ruby.PlaySound(fixedAud);
+        NPC jambi = GameObject.FindWithTag("JAMBI").GetComponent<NPC>();
+        if(jambi.NoticeRbFixed())
+        {
+            ruby.PlaySound(fixedAud);
+        }
     }
 }
