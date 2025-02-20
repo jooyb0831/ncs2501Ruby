@@ -23,17 +23,25 @@ public class RubyController : MonoBehaviour
     private Animator animator;
     private Vector2 lookDirection = new Vector2(1,0);
 
+    private PlayerMove moves;
 
+    [SerializeField] GameObject androidPanel;
     [SerializeField] GameObject projectilePrefab;
     [SerializeField] GameObject collEffectPrefab;
     // Start is called before the first frame update
     void Start()
     {
+#if(!UNITY_ANDROID)
+        androidPanel.SetActive(false);
+#else
+        androidPanel.SetActive(true);
+#endif
         rb2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
         position = rb2d.position;
         currentHealth = maxHealth;
+        moves = GetComponent<PlayerMove>();
         /*
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 10;// 초당 프레임 10으로 제한
@@ -48,9 +56,13 @@ public class RubyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+#if(!UNITY_ANDROID)
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
         Vector2 move = new Vector2(horizontal, vertical);
+#else
+        Vector2 move = moves.MoveInput.normalized;
+#endif
         if(!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(0.0f,move.y)) //Approximately거의 동일하면 true반환함.
         {
             lookDirection.Set(move.x, move.y);
@@ -87,14 +99,19 @@ public class RubyController : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.X))
         {
-            RaycastHit2D hit = Physics2D.Raycast(rb2d.position + Vector2.up * 0.2f, lookDirection, 1.5f, LayerMask.GetMask("NPC"));
-            if(hit.collider!=null)
+
+        }
+    }
+
+    public void TalkNPC()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(rb2d.position + Vector2.up * 0.2f, lookDirection, 1.5f, LayerMask.GetMask("NPC"));
+        if (hit.collider != null)
+        {
+            NPC npc = hit.collider.GetComponent<NPC>();
+            if (npc != null)
             {
-                NPC npc = hit.collider.GetComponent<NPC>();
-                if(npc !=null)
-                {
-                    npc.DisplayDialog();
-                }
+                npc.DisplayDialog();
             }
         }
     }
@@ -116,7 +133,7 @@ public class RubyController : MonoBehaviour
         Debug.Log($"{currentHealth}/{maxHealth}");
     }
 
-    private void Launch()
+    public void Launch()
     {
         GameObject projectileObj = Instantiate(projectilePrefab, rb2d.position + Vector2.up * 0.5f, Quaternion.identity);
         Projectile projectile = projectileObj.GetComponent<Projectile>();
